@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { useLoginMutation } from '@/lib/api'
 import { useRouter } from 'next/navigation'
 import { setUser } from '@/features/user/userSlice'
-import { useAppDispatch } from '@/lib/hooks'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
+import Cookies from 'js-cookie'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -13,10 +14,13 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [login, { isLoading, error }] = useLoginMutation()
 
+  const user = useAppSelector((state) => state.user.value)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
       const result = await login({ username, password }).unwrap()
+      Cookies.set('token', result.token) // Сохраняем токен в cookies
       dispatch(setUser(result.user.username)) // Сохраняем пользователя в Redux
       router.replace('/') // Возврат на главную
     } catch (err) {

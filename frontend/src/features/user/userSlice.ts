@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface UserState {
   value: string;
+  isLoaded?: boolean;
 }
 
 const initialState: UserState = { value: "" };
@@ -12,6 +13,7 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<string>) => {
       state.value = action.payload;
+      state.isLoaded = true;
     },
     clearUser: state => {
       state.value = "";

@@ -13,3 +13,6 @@ docker compose down -v
 | -------- | ---------- | -------------------------------------------------------------- |
 | `alice`  | `alice123` | `$2b$10$LNl7JSoGniXGm7OGGlTYluxc12U3EvMO/JjumZN19Fl/keIJgMygO` |
 | `bob`    | `bob123`   | `$2b$10$yHxAC.CDvg.7Ag88YeZdQu6voQ3oeb2RfaVrSnrcGFKpwWIye1DeG` |
+
+Проверка
+docker exec -it bd-postgres-1 psql -U myuser -d mydb

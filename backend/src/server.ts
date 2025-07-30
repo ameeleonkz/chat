@@ -1,7 +1,7 @@
 import next from 'next'
 import http from 'http'
 import { Server } from 'socket.io'
-import { setupSocket } from './pages/socket/socket'
+import { setupSocket } from './lib/socket'
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev, dir: './src' })
@@ -18,7 +18,7 @@ app.prepare()
 
     const PORT = process.env.PORT || 3001
     server.listen(PORT, () => {
-      console.log(`🚀 Backend+Next.js running on http://localhost:${PORT}`)
+      console.log(`🚀 Backend+Next.js running on http://backend:${PORT}`)
     })
   })
   .catch((e) => {

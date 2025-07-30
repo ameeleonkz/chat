@@ -3,14 +3,16 @@
 import { useEffect, useState } from 'react'
 import { initSocket } from './socket'
 
+type Message = { author: string; text: string, id: string }
+
 export function useSocketEvents() {
-  const [messages, setMessages] = useState<string[]>([])
+  const [messages, setMessages] = useState<Message[]>([])
   const [connected, setConnected] = useState(false)
 
   useEffect(() => {
     const socket = initSocket()
 
-    const onMessage = (msg: string) => setMessages((prev) => [...prev, msg])
+    const onMessage = (msg: Message) => setMessages((prev) => [...prev, msg])
     const onConnect = () => setConnected(true)
     const onDisconnect = () => setConnected(false)
 
@@ -25,7 +27,7 @@ export function useSocketEvents() {
     }
   }, [])
 
-  const send = (msg: string) => {
+  const send = (msg: Message) => {
     initSocket().emit('message', msg)
   }
 

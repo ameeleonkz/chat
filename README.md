@@ -21,7 +21,7 @@ docker compose up -d --build
 
 # demo
 
-<video src='https://youtu.be/f0DlK5aPAb0' width=180></video>
+[demo](https://github.com/user-attachments/assets/644b1a71-561f-43b0-9275-448ec3a08036)
 
 # todo:
 - добавить регистрацию пользователя

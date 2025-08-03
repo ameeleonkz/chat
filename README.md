@@ -2,6 +2,12 @@
 
 Чат, в котором длинные сообщения сокращаются до небольших с помощью ИИ (open-source модель t5-small).
 
+# quickStart
+```bash
+chmod +x quickstart.sh && ./quickStart.sh
+```
+
+# alter
 1. в **каждом** сервисе заполнить env файлы из .env.example
 ```bash
 cp .env.example .env

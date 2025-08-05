@@ -211,3 +211,5 @@ node_modules/
 .next
 !frontend/**/lib
 !backend/**/lib
+
+.DS_Store

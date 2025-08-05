@@ -32,4 +32,14 @@ docker compose up -d --build
 # todo:
 - добавить регистрацию пользователя
 - добавить хранение и чтение сообщений в/из бд
-- добавить мониторинг сервисов / логирование
+- ~~добавить мониторинг сервисов~~ / логирование
+
+# services:
+- **Frontend** - http://localhost:3000
+- **Backend** - http://localhost:3001
+- **Adminer** (БД) - http://localhost:8080
+- **Prometheus** - http://localhost:9090
+- **Grafana** - http://localhost:3002 (admin/admin)
+
+# troubleshooting
+- docker-compose нестабильно работает с symlink. Если у вас проект находится в папке-симлинке (например, goinfre), то надо заменить в ямлике `./bd/init.sql:/docker-entrypoint-initdb.d/init.sql:ro` например на `~/init.sql:/docker-entrypoint-initdb.d/init.sql:ro` и соответственно расположить в этой папке файл

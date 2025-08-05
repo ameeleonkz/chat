@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
 
@@ -28,3 +29,6 @@ async def filter_message(req: MessageRequest):
     print(req.text)
     filtered = t5_filter(req.text)
     return MessageResponse(text=filtered)
+
+# Инициализация и запуск метрик
+Instrumentator().instrument(app).expose(app)
